@@ -29,7 +29,7 @@ class Posts extends Component {
               </div>
             </div>
           </Link>
-          {this.state.posts === null && <p></p>}
+          {this.state.posts === null && <p>Loading</p>}
           {this.state.posts != null &&
             this.state.posts.map((question) => (
               <div key={question.id} className="col-sm-12 col-md-4 col-lg-3">
