@@ -14,7 +14,11 @@ const postsRoute = require("./routes/posts");
 app.use("/posts", postsRoute);
 
 //Connect to mongoDb
-mongoose.connect(process.env.MONGODB_URI, () => console.log("connected to Db"));
+mongoose.connect(
+  process.env.MONGODB_URI ||
+    "mongodb+srv://user1:1234@cluster0.93j1j.mongodb.net/RESTApp?retryWrites=true&w=majority",
+  () => console.log("connected to Db")
+);
 
 app.use(express.static("frontend/build"));
 
