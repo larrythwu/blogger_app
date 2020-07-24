@@ -18,7 +18,8 @@ mongoose.connect(process.env.MONGODB_URI || process.env.DB_CONNECTION, () =>
   console.log("connected to Db")
 );
 
-app.use(express.static("client/build"));
+app.use(express.static("frontend/build"));
+
 //Listen
 const Port = process.env.PORT || 4000;
 
