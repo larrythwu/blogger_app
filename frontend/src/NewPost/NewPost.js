@@ -30,7 +30,7 @@ class NewPost extends Component {
       disabled: true,
     });
 
-    await axios.post("http://localhost:4000/posts", {
+    await axios.post("/posts", {
       title: this.state.title,
       description: this.state.description,
     });

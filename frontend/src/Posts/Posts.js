@@ -12,7 +12,7 @@ class Posts extends Component {
   }
 
   async componentDidMount() {
-    const posts = (await axios.get("http://localhost:4000/posts/")).data;
+    const posts = (await axios.get("/posts")).data;
     this.setState({
       posts,
     });
@@ -30,7 +30,7 @@ class Posts extends Component {
             </div>
           </Link>
           {this.state.posts === null && <p></p>}
-          {this.state.posts &&
+          {this.state.posts != null &&
             this.state.posts.map((question) => (
               <div key={question.id} className="col-sm-12 col-md-4 col-lg-3">
                 <Link to={`/posts/${question._id}`}>

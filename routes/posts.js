@@ -12,10 +12,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/first", (req, res) => {
-  res.send("First Post");
-});
-
 //writing to the database
 router.post("/", async (req, res) => {
   console.log(req.body);
@@ -66,4 +62,10 @@ router.patch("/:postId", async (req, res) => {
     res.json({ message: err });
   }
 });
+
+// If no API routes are hit, send the React app
+router.use(function (req, res) {
+  res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
+});
+
 module.exports = router;
