@@ -19,9 +19,13 @@ app.get("/", (req, res) => {
 });
 
 //Connect to mongoDb
-mongoose.connect(process.env.DB_CONNECTION, () =>
+mongoose.connect(process.env.MONGODB_URI || process.env.DB_CONNECTION, () =>
   console.log("connected to Db")
 );
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("frontend/build"));
+}
 //Listen
-app.listen(4000);
+const Port = process.env.PORT || 4000;
+app.listen(Port);
